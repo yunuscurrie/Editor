@@ -12,6 +12,12 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
+*.dwlt
+# USER settings
+UserSettings/
+Temp/
+Library/
+ProjectSettings/
 
 # Mono auto generated files
 mono_crash.*
