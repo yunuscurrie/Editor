@@ -25,6 +25,7 @@ public class Pointer : MonoBehaviour
 
     public int[] prevCoords;
 
+
     public GameObject[] varients;
 
     public GameManager gameMan;
@@ -38,7 +39,8 @@ public class Pointer : MonoBehaviour
         tileBrush = ObjectMan.chosenBrush;
         gameMan.point = gameObject.GetComponent<Pointer>();
         ObjectMan.pointer = gameObject.GetComponent<Pointer>();
-        prevCoords = new int[3];
+        prevCoords = new int[5];
+ 
 
 
     }
@@ -149,21 +151,22 @@ public class Pointer : MonoBehaviour
         
             if(ObjectMan.brush == -1 &&Input.GetMouseButton(1)){
                 if(prevCoords[0] != mouseX || prevCoords[1] != mouseY || prevCoords[2] != mouseZ){
-                    prev = false;
+                        prev = false;
                 }
             if (!prev){
                     prev = true;
 
                     ObjectMan.remove(x, y, z);
                     getMouseTile();
-                    prevCoords = new int[] {x, y, z};
+                    prevCoords = new int[] {x, y, z, mouseX, mouseY, mouseZ};
                 }
         } else {
             if(mouseX>0 && mouseY>0 && mouseZ>0 && mouseX < ObjectMan.w-1 && mouseY < ObjectMan.h-1 && mouseZ < ObjectMan.d-1){
             if(prevCoords[0] != mouseX || prevCoords[1] != mouseY || prevCoords[2] != mouseZ || prevCoords[3] != x || prevCoords[4] != y || prevCoords[5] != z){
-                prev = false;
-                }
+                        prev = false;
+            }
             if (!prev){
+              
                     ObjectMan.add(mouseX, mouseY, mouseZ, ObjectMan.brush);
                     getMouseTile();
                     prevCoords = new int[] {mouseX, mouseY, mouseZ, x, y, z};
